@@ -41,6 +41,9 @@ looker.plugins.visualizations.add({
                 pointerTailLength			: size_min * 0.025,
                 pointerHeadLengthPercent	: 0.8,
                 
+                textbox_width               : size_min * 0.5,
+                textbox_height              : size_min * 0.1,
+
                 minValue					: 0,
                 maxValue					: 1.5,
                 
@@ -54,7 +57,7 @@ looker.plugins.visualizations.add({
                 labelInset					: size_min * 0.1,
                 font_size                   : size_min * 0.04,
         
-                arcColorFn					: d3.interpolateHsl(d3.rgb('#e8e2ca'), d3.rgb('#CC0000'))
+                arcColorFn					: d3.interpolateHsl(d3.rgb('#d4eebb'), d3.rgb('#264905'))
             };
             var range = undefined;
             var r = undefined;
@@ -152,24 +155,39 @@ looker.plugins.visualizations.add({
                     .text(config.labelFormat);
                 
             
-                lg.selectAll('text2')
-                    .data(ticks)
-                    .enter()
-                    .append('text')
-                    .attr('transform', function(d) {
-                        var ratio = scale(d);
-                        var newAngle = config.minAngle + (ratio * range);
-                        return 'rotate(' + newAngle + ') translate(0,' + (config.labelInset - r) + ')';
-                        })
-                    .attr('dy', '-1em')
-                    .text(function(d, i){return '$' + ticks_value[i]/1000 + 'k'});
-                
-                // var cg = svg.append('g')
-                //     .attr('class', 'banner')
-                //     .attr('transform', centerTx)
+                // lg.selectAll('text2')
+                //     .data(ticks)
+                //     .enter()
                 //     .append('text')
-                //     .attr('dy', '2em')
-                //     .text('aaaaaaa');
+                //     .attr('transform', function(d) {
+                //         var ratio = scale(d);
+                //         var newAngle = config.minAngle + (ratio * range);
+                //         return 'rotate(' + newAngle + ') translate(0,' + (config.labelInset - r) + ')';
+                //         })
+                //     .attr('dy', '-1em')
+                //     .text(function(d, i){return '$' + ticks_value[i]/1000 + 'k'});
+                
+                var cg = svg
+                    .append('g')
+                    .attr('class', 'value')
+                    .attr('transform', centerTx)
+                    .append('text')
+                    .attr('dy', '2em')
+                    .style("text-anchor", "middle")
+                    .text('$' + d3.format(",.2r")(numerator));
+                    // .append('rect')
+                    // .style('fill', 'red')
+                    // .attr('transform', 'translate(-' + config.textbox_width / 2 + ',' + config.textbox_height / 4 + ')')
+                    // .attr("width", config.textbox_width)
+                    // .attr("height", config.textbox_height)
+                
+                
+                    // .attr('transform', 'translate(' + config.clipWidth / 2 + ',' +  config.clipWidth * 2 / 3 + ')');
+                    // .attr('class', 'banner')
+                    // .attr('transform', centerTx)
+                    // .append('text')
+                    // .attr('dy', '2em')
+                    // .text('aaaaaaa');
         
                 // pointer element
                 var lineData = [

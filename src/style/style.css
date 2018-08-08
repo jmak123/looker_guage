@@ -27,8 +27,11 @@ g.label {
   text-anchor: middle;
   font-weight: bold;
   fill: #666;
-  font-size: 120%
+  font-size: 120%;
 }
 
-g.banner text{
+g.value{
+  fill: rgb(146, 12, 12);
+  font-size: 200%;
+  font-weight: bold;
 }
