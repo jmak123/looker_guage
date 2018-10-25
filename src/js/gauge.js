@@ -10,6 +10,8 @@ looker.plugins.visualizations.add({
 
 	updateAsync: function(data, element, config, queryResponse, details, doneRendering){
   
+        console.log('looker_speedo');
+
         var numerator = data[0]['var1'].value
         var denominator = data[0]['var2'].value
 
@@ -163,7 +165,7 @@ looker.plugins.visualizations.add({
                     .style("text-anchor", "middle")
                     .text('$' + d3.format(",.0r")(Math.round(numerator)));
         
-                // pointer element
+                // pointer elements
                 var lineData = [
                     [config.pointerWidth / 2, 0], 
                     [0, -pointerHeadLength],

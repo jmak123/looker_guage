@@ -155,8 +155,7 @@ var gauge = function(container, _value, _target) {
 			.attr('transform', centerTx)
 			.append('text')
 			.attr('dy', '2em')
-			// .text('aaaaaaa');
-			.text('$' + d3.format(",")(Math.round(11234560.66, 0)));
+			.text('aaaaaaa');
 
 		// pointer element
 		var lineData = [
