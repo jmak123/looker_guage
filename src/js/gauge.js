@@ -154,19 +154,6 @@ looker.plugins.visualizations.add({
                     .attr('dy', '0em')
                     .text(config.labelFormat);
                 
-            
-                // lg.selectAll('text2')
-                //     .data(ticks)
-                //     .enter()
-                //     .append('text')
-                //     .attr('transform', function(d) {
-                //         var ratio = scale(d);
-                //         var newAngle = config.minAngle + (ratio * range);
-                //         return 'rotate(' + newAngle + ') translate(0,' + (config.labelInset - r) + ')';
-                //         })
-                //     .attr('dy', '-1em')
-                //     .text(function(d, i){return '$' + ticks_value[i]/1000 + 'k'});
-                
                 var cg = svg
                     .append('g')
                     .attr('class', 'value')
@@ -174,20 +161,7 @@ looker.plugins.visualizations.add({
                     .append('text')
                     .attr('dy', '2em')
                     .style("text-anchor", "middle")
-                    .text('$' + d3.format(",.2r")(numerator));
-                    // .append('rect')
-                    // .style('fill', 'red')
-                    // .attr('transform', 'translate(-' + config.textbox_width / 2 + ',' + config.textbox_height / 4 + ')')
-                    // .attr("width", config.textbox_width)
-                    // .attr("height", config.textbox_height)
-                
-                
-                    // .attr('transform', 'translate(' + config.clipWidth / 2 + ',' +  config.clipWidth * 2 / 3 + ')');
-                    // .attr('class', 'banner')
-                    // .attr('transform', centerTx)
-                    // .append('text')
-                    // .attr('dy', '2em')
-                    // .text('aaaaaaa');
+                    .text('$' + d3.format(",.0r")(Math.round(numerator)));
         
                 // pointer element
                 var lineData = [
