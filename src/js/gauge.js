@@ -163,7 +163,7 @@ looker.plugins.visualizations.add({
                     .append('text')
                     .attr('dy', '2em')
                     .style("text-anchor", "middle")
-                    .text('$' + d3.format(",.0r")(Math.round(numerator)));
+                    .text('$' + d3.format(",")(Math.round(numerator)));
         
                 // pointer elements
                 var lineData = [
