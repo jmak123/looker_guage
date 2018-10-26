@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/js/gauge.js',
+  entry: './src/js/speedo.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle_speedo.js',
     path: path.resolve(__dirname, 'dist')
   }, 
   module: {

@@ -202,4 +202,4 @@ function make_gauge(container, _value, _target) {
 
 }
 
-make_gauge('body', 500, 210)
+export {make_gauge}
