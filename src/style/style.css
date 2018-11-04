@@ -19,8 +19,8 @@ g.arc {
 }
 
 g.pointer {
-  fill: slateblue;
-  stroke: #b64011;
+  fill: #1a1a1a;
+  stroke: #1a1a1a;
 }
 
 g.label {

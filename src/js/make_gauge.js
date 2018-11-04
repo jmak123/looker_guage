@@ -1,16 +1,22 @@
 import * as d3 from "d3"
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
 var gauge = function(container, _value, _target) {
         
     var perc = undefined;
     if (_value <= _target * 1.5) {
         perc = _value / _target;
+    } else if (_value < 0) {
+        perc = 0
     } else {
         perc = 1.55;
     }
 
     var max_width = container.clientWidth;
     var max_height = container.clientHeight;
+    // var max_width = $(document).width() * 0.8;
+	// var max_height = $(document).height() * 0.8;
     var size_min = Math.min.apply( Math, [max_width, max_height] );
 
     var that = {};
@@ -41,8 +47,9 @@ var gauge = function(container, _value, _target) {
         labelInset					: size_min * 0.1,
         font_size                   : size_min * 0.04,
 
-        arcColorFn					: d3.interpolateHsl(d3.rgb('#d4eebb'), d3.rgb('#264905'))
+        arcColorFn					: d3.interpolateHsl(d3.rgb('#ffffcc'), d3.rgb('#264905'))
     };
+
     var range = undefined;
     var r = undefined;
     var pointerHeadLength = undefined;
@@ -145,7 +152,13 @@ var gauge = function(container, _value, _target) {
             .append('text')
             .attr('dy', '2em')
             .style("text-anchor", "middle")
-            .text('$' + d3.format(",")(_value));
+            .text('$' + d3.format(",")(_value))
+            .style('fill', function(){
+                console.log(_value)
+                if (_value < 0) {
+                    return '#e60000'
+                } else {return '#666'}
+            });
 
         // pointer elements
         var lineData = [
