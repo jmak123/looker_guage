@@ -3,14 +3,12 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
-  /* background-color: aqua; */
   display: flex;
   align-items: center;
 }
 
 svg {
   margin : auto auto;
-  /* background-color: coral; */
   display: block;
 }
 

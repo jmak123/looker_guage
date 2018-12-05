@@ -1,9 +1,8 @@
 import * as d3 from "d3"
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
 
 var gauge = function(container, _value, _target) {
-        
+    
+    // make new data features
     var perc = undefined;
     if (_value <= _target * 1.5) {
         perc = _value / _target;
@@ -15,8 +14,6 @@ var gauge = function(container, _value, _target) {
 
     var max_width = container.clientWidth;
     var max_height = container.clientHeight;
-    // var max_width = $(document).width() * 0.8;
-	// var max_height = $(document).height() * 0.8;
     var size_min = Math.min.apply( Math, [max_width, max_height] );
 
     var that = {};
