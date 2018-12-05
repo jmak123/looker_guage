@@ -1,4 +1,3 @@
-import * as d3 from "d3"
 import {make_gauge} from './make_gauge.js'
 require('../style/style.css');
 
