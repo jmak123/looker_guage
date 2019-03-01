@@ -1,4 +1,4 @@
-import {make_gauge} from './make_gauge.js'
+import {makeGauge} from './make_gauge.js'
 require('../style/style.css');
 
 looker.plugins.visualizations.add({
@@ -12,7 +12,7 @@ looker.plugins.visualizations.add({
         var numerator = data[0]['var1'].value
         var denominator = data[0]['var2'].value
         
-        make_gauge(element, numerator, denominator)
+        makeGauge(element, numerator, denominator)
 
 		doneRendering()
 	}
