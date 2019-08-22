@@ -9,6 +9,5 @@ looker.plugins.visualizations.add({
     var denominator = data[0]['var2'].value
     makeGauge(element, numerator, denominator)
     doneRendering()
-
-}
+  } 
 });

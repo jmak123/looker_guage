@@ -160,9 +160,20 @@ const gauge = (container, _value, _target)=> {
       [config.pointerWidth / 2, 0]
     ];
     const pointerLine = d3.line().curve(d3.curveLinear);
+
+    const tooltip = d3.select('body')
+      .append('div')
+      .style('position', 'absolute')
+      .style('z-index', '10')
+      .style('visibility', 'hidden')
+      .text(()=> `Target: ${_target}`);
+
     const pg = svg.append('g').data([lineData])
       .attr('class', 'pointer')
-      .attr('transform', centerTx);
+      .attr('transform', centerTx)
+      .on('mouseover', ()=> tooltip.style('visibility', 'visible'))
+      .on('mousemove', ()=> tooltip.style('top', `${d3.event.pageY-10}px`).style('left', `${d3.event.pageX+10}px`))
+      .on('mouseout', ()=> tooltip.style('visibility', 'hidden'));
 
     pointer = pg.append('path')
       .attr('d', pointerLine)
