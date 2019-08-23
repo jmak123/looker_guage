@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/js/speedo.js',
+  entry: './src/js/looker_speedo.js',
   output: {
     filename: 'bundle_speedo.js',
     path: path.resolve(__dirname, 'dist')
@@ -11,6 +11,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.jsx?$/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        loader: 'babel-loader'
       }
     ]
   }
