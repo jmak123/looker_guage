@@ -166,7 +166,7 @@ const gauge = (container, _value, _target)=> {
       .style('position', 'absolute')
       .style('z-index', '10')
       .style('visibility', 'hidden')
-      .text(()=> `Target: ${_target}`);
+      .text(()=> `Target: $${d3.format(',')(Math.round(_target))}`);
 
     const pg = svg.append('g').data([lineData])
       .attr('class', 'pointer')
@@ -177,7 +177,7 @@ const gauge = (container, _value, _target)=> {
 
     pointer = pg.append('path')
       .attr('d', pointerLine)
-      .attr('transform', `rotate(${ config.minAngle })`);
+      .attr('transform', `rotate(${config.minAngle})`);
     
     return pointer;
   }
@@ -191,7 +191,7 @@ const gauge = (container, _value, _target)=> {
   }
 
   function update() {
-    const ratio = scale(perc);
+    const ratio = scale(perc());
     const updatedAngle = config.minAngle + (ratio * range);
     pointer.transition()
       .duration(config.transitionMs)
